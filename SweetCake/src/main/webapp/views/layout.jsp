@@ -6,9 +6,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Nguyễn Tú Akina</title>
 </head>
+<!-- BOOTSTRAPS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+	crossorigin="anonymous"></script>
+<!-- ICON -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<c:set var="url"
+	value="${pageContext.request.contextPath}/nguyentuakina/"
+	scope="request"></c:set>
+<c:set var="urlimg" value="${pageContext.request.contextPath}/images/"
+	scope="request"></c:set>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/views/css/style.css">
 <body>
-
+	<header></header>
+	<main></main>
+	<footer></footer>
 </body>
+
 </html>

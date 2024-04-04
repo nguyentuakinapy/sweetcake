@@ -15,7 +15,8 @@ import com.sweetcake.dao.SanPhamDAOImplements;
 import com.sweetcake.entity.SanPham;
 import com.sweetcake.utils.JpaUtils;
 
-@WebServlet("/home")
+@WebServlet({ "/sweetcake/home", "/sweetcake/product", "/sweetcake/search", "/sweetcake/login", "/sweetcake/register",
+		"/sweetcake/logout", "/sweetcake/category" })
 public class HomePages extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,5 +26,6 @@ public class HomePages extends HttpServlet {
 		spList.forEach(f -> {
 			System.out.println(f.getTenSp());
 		});
+		req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
 	}
 }

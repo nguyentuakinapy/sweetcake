@@ -30,9 +30,9 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/views/css/style.css">
 <body>
-	<header></header>
-	<main></main>
-	<footer></footer>
+	<jsp:include page="/views/layout/header.jsp"></jsp:include>
+	<jsp:include page="/views/layout/main.jsp"></jsp:include>
+	<jsp:include page="/views/layout/footer.jsp"></jsp:include>
 </body>
 
 </html>

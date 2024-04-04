@@ -5,7 +5,9 @@
 <header class="container">
 	<div class="center_header text-center row mt-3">
 		<div class="col-3">
-			<img src="img/logo.webp" alt="" style="width: 130px; height: 130px;">
+			<img
+				src="https://theme.hstatic.net/1000104153/1001164818/14/logo.png?v=62"
+				alt="" style="width: 130px; height: 130px;">
 		</div>
 		<div class="col-9 ">
 			<nav class="navbar navbar-expand-lg float-end">

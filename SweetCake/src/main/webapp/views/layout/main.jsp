@@ -4,7 +4,9 @@
 <%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <main>
 	<div class="banner container-fluid">
-		<img class="w-100 mt-2" src="img/banner1.webp" alt="">
+		<img class="w-100 mt-2"
+			src="https://theme.hstatic.net/1000104153/1001164818/14/slideshow_1.jpg?v=62"
+			alt="">
 	</div>
 	<div class="product_tilte mt-2">
 		<div class="title text-center h3 text-primary">
@@ -14,19 +16,21 @@
 	<div class="product_new container">
 		<div class="row">
 			<div class="col-md-4 col-sm-6 col-12 text-center">
-				<a href="#"> <img src="img/product1.webp" class="w-100" alt="">
+				<a href="#"> <img
+					src="https://product.hstatic.net/1000104153/product/vanilla_cheese_cake_6_pax_cdee19e640b645378df936cef0281fc2_grande.jpg"
+					class="w-100" alt=""> <span class="text-primary">Vanilla
+						Cheese Cake <br>295,000₫
+				</span>
+				</a>
+			</div>
+			<div class="col-md-4 col-sm-6 col-12 text-center">
+				<a href="#"> <img src="https://product.hstatic.net/1000104153/product/vanilla_cheese_cake_6_pax_cdee19e640b645378df936cef0281fc2_grande.jpg" class="w-100" alt="">
 					<span class="text-primary">Vanilla Cheese Cake <br>295,000₫
 				</span>
 				</a>
 			</div>
 			<div class="col-md-4 col-sm-6 col-12 text-center">
-				<a href="#"> <img src="img/product1.webp" class="w-100" alt="">
-					<span class="text-primary">Vanilla Cheese Cake <br>295,000₫
-				</span>
-				</a>
-			</div>
-			<div class="col-md-4 col-sm-6 col-12 text-center">
-				<a href="#"> <img src="img/product1.webp" class="w-100" alt="">
+				<a href="#"> <img src="https://product.hstatic.net/1000104153/product/vanilla_cheese_cake_6_pax_cdee19e640b645378df936cef0281fc2_grande.jpg" class="w-100" alt="">
 					<span class="text-primary">Vanilla Cheese Cake <br>295,000₫
 				</span>
 				</a>
@@ -34,19 +38,19 @@
 		</div>
 		<div class="row">
 			<div class="col-md-4 col-sm-6 col-12 text-center">
-				<a href="#"> <img src="img/product1.webp" class="w-100" alt="">
+				<a href="#"> <img src="https://product.hstatic.net/1000104153/product/vanilla_cheese_cake_6_pax_cdee19e640b645378df936cef0281fc2_grande.jpg" class="w-100" alt="">
 					<span class="text-primary">Vanilla Cheese Cake <br>295,000₫
 				</span>
 				</a>
 			</div>
 			<div class="col-md-4 col-sm-6 col-12 text-center">
-				<a href="#"> <img src="img/product1.webp" class="w-100" alt="">
+				<a href="#"> <img src="https://product.hstatic.net/1000104153/product/vanilla_cheese_cake_6_pax_cdee19e640b645378df936cef0281fc2_grande.jpg" class="w-100" alt="">
 					<span class="text-primary">Vanilla Cheese Cake <br>295,000₫
 				</span>
 				</a>
 			</div>
 			<div class="col-md-4 col-sm-6 col-12 text-center">
-				<a href="#"> <img src="img/product1.webp" class="w-100" alt="">
+				<a href="#"> <img src="https://product.hstatic.net/1000104153/product/vanilla_cheese_cake_6_pax_cdee19e640b645378df936cef0281fc2_grande.jpg" class="w-100" alt="">
 					<span class="text-primary">Vanilla Cheese Cake <br>295,000₫
 				</span>
 				</a>
@@ -60,15 +64,15 @@
 		<div class="row">
 			<div class="col-md-4 col-sm-6 col-12 text-center">
 				<a href="#"><img style="min-width: 615px; height: 400px;"
-					src="img/home_category_1_banner.webp" class="w-100" alt=""></a>
+					src="https://theme.hstatic.net/1000104153/1001164818/14/block_home_category1.jpg?v=62" class="w-100" alt=""></a>
 			</div>
 			<div class="col-md-4 col-sm-6 col-12 text-center">
 				<a href="#"><img style="min-width: 615px; height: 400px;"
-					src="img/home_category_1_banner.webp" class="w-100" alt=""></a>
+					src="https://theme.hstatic.net/1000104153/1001164818/14/block_home_category2.jpg?v=62" class="w-100" alt=""></a>
 			</div>
 			<div class="col-md-4 col-sm-6 col-12 text-center">
 				<a href="#"><img style="min-width: 615px; height: 400px;"
-					src="img/home_category_1_banner.webp" class="w-100" alt=""></a>
+					src="https://theme.hstatic.net/1000104153/1001164818/14/block_home_category3.jpg?v=62" class="w-100" alt=""></a>
 			</div>
 		</div>
 	</div>
@@ -81,19 +85,19 @@
 	<div class="product_hot container">
 		<div class="row">
 			<div class="col-md-4 col-sm-6 col-12 text-center">
-				<a href="#"> <img src="img/product1.webp" class="w-100" alt="">
+				<a href="#"> <img src="https://product.hstatic.net/1000104153/product/vanilla_cheese_cake_6_pax_cdee19e640b645378df936cef0281fc2_grande.jpg" class="w-100" alt="">
 					<span class="text-primary">Vanilla Cheese Cake <br>295,000₫
 				</span>
 				</a>
 			</div>
 			<div class="col-md-4 col-sm-6 col-12 text-center">
-				<a href="#"> <img src="img/product1.webp" class="w-100" alt="">
+				<a href="#"> <img src="https://product.hstatic.net/1000104153/product/vanilla_cheese_cake_6_pax_cdee19e640b645378df936cef0281fc2_grande.jpg" class="w-100" alt="">
 					<span class="text-primary">Vanilla Cheese Cake <br>295,000₫
 				</span>
 				</a>
 			</div>
 			<div class="col-md-4 col-sm-6 col-12 text-center">
-				<a href="#"> <img src="img/product1.webp" class="w-100" alt="">
+				<a href="#"> <img src="https://product.hstatic.net/1000104153/product/vanilla_cheese_cake_6_pax_cdee19e640b645378df936cef0281fc2_grande.jpg" class="w-100" alt="">
 					<span class="text-primary">Vanilla Cheese Cake <br>295,000₫
 				</span>
 				</a>
@@ -101,19 +105,19 @@
 		</div>
 		<div class="row">
 			<div class="col-md-4 col-sm-6 col-12 text-center">
-				<a href="#"> <img src="img/product1.webp" class="w-100" alt="">
+				<a href="#"> <img src="https://product.hstatic.net/1000104153/product/vanilla_cheese_cake_6_pax_cdee19e640b645378df936cef0281fc2_grande.jpg" class="w-100" alt="">
 					<span class="text-primary">Vanilla Cheese Cake <br>295,000₫
 				</span>
 				</a>
 			</div>
 			<div class="col-md-4 col-sm-6 col-12 text-center">
-				<a href="#"> <img src="img/product1.webp" class="w-100" alt="">
+				<a href="#"> <img src="https://product.hstatic.net/1000104153/product/vanilla_cheese_cake_6_pax_cdee19e640b645378df936cef0281fc2_grande.jpg" class="w-100" alt="">
 					<span class="text-primary">Vanilla Cheese Cake <br>295,000₫
 				</span>
 				</a>
 			</div>
 			<div class="col-md-4 col-sm-6 col-12 text-center">
-				<a href="#"> <img src="img/product1.webp" class="w-100" alt="">
+				<a href="#"> <img src="https://product.hstatic.net/1000104153/product/vanilla_cheese_cake_6_pax_cdee19e640b645378df936cef0281fc2_grande.jpg" class="w-100" alt="">
 					<span class="text-primary">Vanilla Cheese Cake <br>295,000₫
 				</span>
 				</a>

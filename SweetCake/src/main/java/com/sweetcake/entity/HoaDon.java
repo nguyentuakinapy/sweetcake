@@ -8,11 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@NamedQueries({ @NamedQuery(name = "HoaDon.findAll", query = "SELECT o FROM HoaDon o") })
 @Entity
 @Table(name = "HoaDon")
 public class HoaDon {

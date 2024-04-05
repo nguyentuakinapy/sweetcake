@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Nguyễn Tú Akina</title>
+<title>Sweet Cake Bakery</title>
 </head>
 <!-- BOOTSTRAPS -->
 <link
@@ -31,7 +31,7 @@
 	href="${pageContext.request.contextPath}/views/css/style.css">
 <body>
 	<jsp:include page="/views/layout/header.jsp"></jsp:include>
-	<jsp:include page="/views/layout/main.jsp"></jsp:include>
+	<jsp:include page="${views}"></jsp:include>
 	<jsp:include page="/views/layout/footer.jsp"></jsp:include>
 </body>
 

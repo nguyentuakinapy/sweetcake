@@ -18,14 +18,64 @@ import com.sweetcake.utils.JpaUtils;
 @WebServlet({ "/sweetcake/home", "/sweetcake/product", "/sweetcake/search", "/sweetcake/login", "/sweetcake/register",
 		"/sweetcake/logout", "/sweetcake/category" })
 public class HomePages extends HttpServlet {
+	private SanPhamDAO spDao = new SanPhamDAOImplements();
+
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		EntityManager em = JpaUtils.getEntityManager();
-		SanPhamDAO spDao = new SanPhamDAOImplements();
 		List<SanPham> spList = spDao.findAll();
 		spList.forEach(f -> {
 			System.out.println(f.getTenSp());
 		});
+		if (req.getServletPath().contains("home")) {
+			this.doHome(req, resp);
+		} else if (req.getServletPath().contains("product")) {
+			this.doProduct(req, resp);
+		} else if (req.getServletPath().contains("search")) {
+			this.doSearch(req, resp);
+		} else if (req.getServletPath().contains("login")) {
+			this.doLogin(req, resp);
+		} else if (req.getServletPath().contains("register")) {
+			this.doRegister(req, resp);
+		} else if (req.getServletPath().contains("logout")) {
+			this.doLogOut(req, resp);
+		} else if (req.getServletPath().contains("category")) {
+			this.doCategory(req, resp);
+		}
+
 		req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
+	}
+
+	private void doCategory(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void doLogOut(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void doRegister(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void doLogin(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void doSearch(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void doProduct(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void doHome(HttpServletRequest req, HttpServletResponse resp) {
+		req.setAttribute("views", "/views/layout/main.jsp");
 	}
 }

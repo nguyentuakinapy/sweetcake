@@ -6,9 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+@NamedQueries({ @NamedQuery(name = "NguoiDung.findAll", query = "SELECT o FROM NguoiDung o") })
 @Entity
 @Table(name = "NguoiDung")
 public class NguoiDung {
@@ -130,5 +133,5 @@ public class NguoiDung {
 	public void setHdList(List<HoaDon> hdList) {
 		this.hdList = hdList;
 	}
-	
+
 }

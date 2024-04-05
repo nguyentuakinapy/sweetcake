@@ -7,7 +7,7 @@ import com.sweetcake.entity.SanPham;
 public interface SanPhamDAO {
 	List<SanPham> findAll();
 
-	SanPham findByID();
+	SanPham findByID(String maSp);
 
 	void create(SanPham sanPham);
 

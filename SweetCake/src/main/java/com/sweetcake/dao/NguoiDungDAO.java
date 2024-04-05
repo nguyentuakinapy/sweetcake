@@ -7,7 +7,7 @@ import com.sweetcake.entity.NguoiDung;
 public interface NguoiDungDAO {
 	List<NguoiDung> findAll();
 
-	NguoiDung findByID();
+	NguoiDung findByID(String maNguoiDung);
 
 	void create(NguoiDung nguoiDung);
 

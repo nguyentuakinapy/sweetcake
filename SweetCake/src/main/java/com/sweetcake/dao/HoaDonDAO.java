@@ -7,7 +7,7 @@ import com.sweetcake.entity.HoaDon;
 public interface HoaDonDAO {
 	List<HoaDon> findAll();
 
-	HoaDon findByID();
+	HoaDon findByID(String maHoaDon);
 
 	void create(HoaDon hoaDon);
 

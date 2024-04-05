@@ -7,11 +7,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@NamedQueries({ @NamedQuery(name = "MaGiamGia.findAll", query = "SELECT o FROM MaGiamGia o") })
 @Entity
 @Table(name = "MaGiamGia")
 public class MaGiamGia {
@@ -28,9 +31,9 @@ public class MaGiamGia {
 
 	@Column(name = "SoLuong")
 	Integer soLuong;
-	
+
 	@OneToMany
-	@JoinColumn(name="maGiamGia")
+	@JoinColumn(name = "maGiamGia")
 	List<HoaDon> hdList;
 
 	public MaGiamGia(String maGiamGia, Integer phanTramGiam, Date hanSuDung, Integer soLuong, List<HoaDon> hdList) {
@@ -85,6 +88,5 @@ public class MaGiamGia {
 	public void setHdList(List<HoaDon> hdList) {
 		this.hdList = hdList;
 	}
-	
-	
+
 }

@@ -7,7 +7,7 @@ import com.sweetcake.entity.MaGiamGia;
 public interface MaGiamGiaDAO {
 	List<MaGiamGia> findAll();
 
-	MaGiamGia findByID();
+	MaGiamGia findByID(String maGiamGia);
 
 	void create(MaGiamGia maGiamGia);
 

@@ -2,38 +2,57 @@ package com.sweetcake.dao;
 
 import java.util.List;
 
-import com.sweetcake.entity.MaGiamGia;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
-public class MaGiamGiaDAOImplements implements MaGiamGiaDAO{
+import com.sweetcake.entity.MaGiamGia;
+import com.sweetcake.utils.JpaUtils;
+
+public class MaGiamGiaDAOImplements implements MaGiamGiaDAO {
+	EntityManager em = JpaUtils.getEntityManager();
 
 	@Override
 	public List<MaGiamGia> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<MaGiamGia> query = em.createNamedQuery("MaGiamGia.findAll", MaGiamGia.class);
+		return query.getResultList();
 	}
 
 	@Override
-	public MaGiamGia findByID() {
-		// TODO Auto-generated method stub
-		return null;
+	public MaGiamGia findByID(String maGiamGia) {
+		return em.find(MaGiamGia.class, maGiamGia);
 	}
 
 	@Override
 	public void create(MaGiamGia maGiamGia) {
-		// TODO Auto-generated method stub
-		
+		try {
+			em.getTransaction().begin();
+			em.persist(maGiamGia);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+		}
 	}
 
 	@Override
 	public void update(MaGiamGia maGiamGia) {
-		// TODO Auto-generated method stub
-		
+		try {
+			em.getTransaction().begin();
+			em.merge(maGiamGia);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+		}
 	}
 
 	@Override
 	public void deleteByMaSp(String maGiamGia) {
-		// TODO Auto-generated method stub
-		
+		try {
+			em.getTransaction().begin();
+			em.remove(maGiamGia);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+		}
 	}
 
 }

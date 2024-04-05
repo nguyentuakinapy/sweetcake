@@ -12,33 +12,52 @@ public class SanPhamDAOImplements implements SanPhamDAO {
 	EntityManager em = JpaUtils.getEntityManager();
 
 	@Override
+	protected void finalize() throws Throwable {
+		JpaUtils.close();
+	}
+
+	@Override
 	public List<SanPham> findAll() {
-		TypedQuery<SanPham> query = em.createQuery("SELECT o FROM SanPham o", SanPham.class);
+		TypedQuery<SanPham> query = em.createNamedQuery("SanPham.findAll", SanPham.class);
 		return query.getResultList();
 	}
 
 	@Override
-	public SanPham findByID() {
-		// TODO Auto-generated method stub
-		return null;
+	public SanPham findByID(String maSp) {
+		return em.find(SanPham.class, maSp);
 	}
 
 	@Override
 	public void create(SanPham sanPham) {
-		// TODO Auto-generated method stub
-
+		try {
+			em.getTransaction().begin();
+			em.persist(sanPham);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+		}
 	}
 
 	@Override
 	public void update(SanPham sanPham) {
-		// TODO Auto-generated method stub
-
+		try {
+			em.getTransaction().begin();
+			em.merge(sanPham);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+		}
 	}
 
 	@Override
 	public void deleteByMaSp(String maSp) {
-		// TODO Auto-generated method stub
-
+		try {
+			em.getTransaction().begin();
+			em.remove(maSp);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+		}
 	}
 
 }

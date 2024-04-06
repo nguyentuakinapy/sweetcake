@@ -23,6 +23,7 @@ public class LoaiBanhServlet extends HttpServlet {
 		if (req.getServletPath().contains("loaibanh")) {
 			Integer maLoaiBanh = Integer.parseInt(req.getPathInfo().substring(1));
 			LoaiBanh lb = lbDao.findByID(maLoaiBanh);
+			req.setAttribute("tenLoaiBanh", lb.getTenLoaiBanh());
 			List<SanPham> spList = lb.getSpList();
 			req.setAttribute("spList", spList);
 			req.setAttribute("lbList", lbDao.findAll());

@@ -20,7 +20,7 @@
 			</ul>
 		</div>
 		<div class="col-9">
-			<h3>Tất cả sản phẩm!</h3>
+			<h3>${tenLoaiBanh}</h3>
 			<div class="row">
 				<c:forEach var="sp" items="${spList}">
 					<div class="col-md-4 col-sm-6 col-12 text-center">

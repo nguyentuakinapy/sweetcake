@@ -5,9 +5,9 @@
 <header class="container">
 	<div class="center_header text-center row mt-3">
 		<div class="col-3">
-			<img
+			<a href="${url}home"><img
 				src="https://theme.hstatic.net/1000104153/1001164818/14/logo.png?v=62"
-				alt="" style="width: 130px; height: 130px;">
+				alt="" style="width: 130px; height: 130px;"></a>
 		</div>
 		<div class="col-9 ">
 			<nav class="navbar navbar-expand-lg float-end">
@@ -20,21 +20,30 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="#">Trang Chủ</a></li>
+							aria-current="page" href="${url}home">Trang Chủ</a></li>
 
-						<li class="nav-item"><a class="nav-link" href="#">Tin Tức</a>
-						</li>
+						<li class="nav-item"><a class="nav-link"
+							href="${url}product/list">Sản phẩm</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Danh Mục </a>
+							data-bs-toggle="dropdown" aria-expanded="false">Danh Mục </a>
 							<ul class="dropdown-menu">
 								<c:forEach var="lb" items="${lbList}">
 									<li><a class="dropdown-item"
 										href="${url}loaibanh/${lb.maLoaiBanh}">${lb.tenLoaiBanh}</a></li>
 								</c:forEach>
 							</ul></li>
-						<li class="nav-item"><a class="nav-link" href="#">Tài
-								Khoản </a></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">Tài khoản</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="${url}login">Đăng
+										nhập</a></li>
+								<li><a class="dropdown-item" href="${url}register">Đăng
+										ký</a></li>
+								<li><a class="dropdown-item" href="${url}logout">Đăng
+										xuất</a></li>
+							</ul></li>
 						<li class="nav-item"><a class="nav-link" href="#">Giỏ
 								Hàng</a></li>
 					</ul>

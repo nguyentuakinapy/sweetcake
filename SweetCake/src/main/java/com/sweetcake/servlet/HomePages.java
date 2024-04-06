@@ -48,6 +48,11 @@ public class HomePages extends HttpServlet {
 		req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
 	}
 
+	@Override
+	public void destroy() {
+		JpaUtils.close();
+	}
+
 	private void doCategory(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO Auto-generated method stub
 

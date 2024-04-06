@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sweetcake.dao.LoaiBanhDAO;
 import com.sweetcake.dao.LoaiBanhDAOImplements;
+import com.sweetcake.dao.NguoiDungDAO;
+import com.sweetcake.dao.NguoiDungDAOImplements;
 import com.sweetcake.dao.SanPhamDAO;
 import com.sweetcake.dao.SanPhamDAOImplements;
+import com.sweetcake.entity.NguoiDung;
 import com.sweetcake.entity.SanPham;
 import com.sweetcake.utils.JpaUtils;
 
@@ -21,14 +24,9 @@ import com.sweetcake.utils.JpaUtils;
 		"/sweetcake/logout", "/sweetcake/category" })
 public class HomePages extends HttpServlet {
 	private SanPhamDAO spDao = new SanPhamDAOImplements();
-	private LoaiBanhDAO lbDao = new LoaiBanhDAOImplements();
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<SanPham> spList = spDao.findAll();
-		spList.forEach(f -> {
-			System.out.println(f.getTenSp());
-		});
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
 		if (req.getServletPath().contains("home")) {
 			this.doHome(req, resp);
 		} else if (req.getServletPath().contains("product")) {
@@ -44,8 +42,9 @@ public class HomePages extends HttpServlet {
 		} else if (req.getServletPath().contains("category")) {
 			this.doCategory(req, resp);
 		}
-
-		req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
+		if (!resp.isCommitted()) {
+			req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
+		}
 	}
 
 	private void doCategory(HttpServletRequest req, HttpServletResponse resp) {
@@ -53,19 +52,45 @@ public class HomePages extends HttpServlet {
 
 	}
 
-	private void doLogOut(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-
+	private void doLogOut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		req.getSession().invalidate();
+		resp.sendRedirect(req.getContextPath() + "/sweetcake/home");
+		return;
 	}
 
 	private void doRegister(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-
+		
+		
+		req.setAttribute("views", "/views/layout/register.jsp");
 	}
 
 	private void doLogin(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-
+		if (req.getMethod().equals("POST")) {
+			NguoiDungDAO NDdao = new NguoiDungDAOImplements();
+			String username = req.getParameter("username");
+			String password = req.getParameter("password");
+			if (!username.isEmpty() && !password.isEmpty()) {
+				try {
+					NguoiDung user = NDdao.findByID(username);
+					if (user != null && user.getMatKhau().equals(password)) {
+						req.getSession().setAttribute("isloginUs", user);
+						if (user.getVaiTro() == 1) {
+							resp.sendRedirect(req.getContextPath() + "/sweetcake/admin/home");
+						} else {
+							resp.sendRedirect(req.getContextPath() + "/sweetcake/home");
+						}
+						return;
+					} else {
+						req.setAttribute("check", "Thông tin đăng nhập không đúng");
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else {
+				req.setAttribute("check", "Vui lòng không để trống !");
+			}
+		}
+		req.setAttribute("views", "/views/layout/login.jsp");
 	}
 
 	private void doSearch(HttpServletRequest req, HttpServletResponse resp) {
@@ -79,7 +104,6 @@ public class HomePages extends HttpServlet {
 	}
 
 	private void doHome(HttpServletRequest req, HttpServletResponse resp) {
-		req.setAttribute("lbList", lbDao.findAll());
 
 		req.setAttribute("views", "/views/layout/main.jsp");
 	}

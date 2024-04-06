@@ -12,11 +12,6 @@ public class SanPhamDAOImplements implements SanPhamDAO {
 	EntityManager em = JpaUtils.getEntityManager();
 
 	@Override
-	protected void finalize() throws Throwable {
-		JpaUtils.close();
-	}
-
-	@Override
 	public List<SanPham> findAll() {
 		TypedQuery<SanPham> query = em.createNamedQuery("SanPham.findAll", SanPham.class);
 		return query.getResultList();

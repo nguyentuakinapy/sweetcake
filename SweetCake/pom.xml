@@ -44,6 +44,22 @@
 		</dependency>
 	</dependencies>
 	<build>
+<<<<<<< HEAD
 		
+=======
+		<!--<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<release>19</release>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
+			</plugin>
+		</plugins>-->
+>>>>>>> 40ca37efd3e2766d24056ec362703afc3b84115b
 	</build>
 </project>

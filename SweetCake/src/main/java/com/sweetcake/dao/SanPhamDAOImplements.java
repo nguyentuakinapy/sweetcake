@@ -60,4 +60,10 @@ public class SanPhamDAOImplements implements SanPhamDAO {
 		}
 	}
 
+	@Override
+	public List<SanPham> listSP() {
+		String jpql = "select e from SanPham e where e.trangThai = 1";
+		TypedQuery<SanPham> query = em.createQuery(jpql, SanPham.class);
+		return query.getResultList();
+	}
 }

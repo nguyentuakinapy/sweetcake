@@ -7,35 +7,44 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sweetcake.dao.SanPhamDAO;
+import com.sweetcake.dao.SanPhamDAOImplements;
+import com.sweetcake.entity.SanPham;
+import java.util.List;
+
 /**
  * Servlet implementation class SanPhamServlet
  */
-@WebServlet("/SanPhamServlet")
+@WebServlet({"/product/list","/product/detail"})
 public class SanPhamServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SanPhamServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+    
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		SanPhamDAO spdao = new SanPhamDAOImplements();
+		String path = req.getServletPath();
+		
+		if (path.contains("list")) {
+			List<SanPham> products = spdao.listSP();
+			products.forEach(f -> {
+				System.out.println(f.getTenSp());
+			});
+			req.setAttribute("list", products);
+			req.setAttribute("views", "/views/user/list.jsp");
+		} else {
+//			if (path.contains("detail")) {
+//			String videoId = req.getPathInfo().substring(1);
+//			Video video = vdao.findById(videoId);
+//			req.setAttribute("video", video);
+//
+//			User user = (User) req.getSession().getAttribute("user");
+////			List<Favorite> favorites = fdao.findByUsername(user.getId());
+//			List<Favorite> favorites = fdao.findByUsername("myntd");
+//			req.setAttribute("favorites", favorites);
+//			req.setAttribute("page", "video/detail.jsp");
+		}
+		req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
 
 }

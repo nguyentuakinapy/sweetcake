@@ -21,7 +21,10 @@ public class HoaDonChiTiet {
 
 	@Column(name = "SoLuong")
 	Integer soLuong;
-
+	
+	@Column(name = "Gia")
+	double gia;
+	
 	@ManyToOne
 	@JoinColumn(name = "maHd")
 	HoaDon hoaDon;
@@ -30,12 +33,22 @@ public class HoaDonChiTiet {
 	@JoinColumn(name = "maSp")
 	SanPham sanPham;
 
-	public HoaDonChiTiet(Long id, Integer soLuong, HoaDon hoaDon, SanPham sanPham) {
+	
+	public HoaDonChiTiet(Long id, Integer soLuong, double gia, HoaDon hoaDon, SanPham sanPham) {
 		super();
 		this.id = id;
 		this.soLuong = soLuong;
+		this.gia = gia;
 		this.hoaDon = hoaDon;
 		this.sanPham = sanPham;
+	}
+
+	public double getGia() {
+		return gia;
+	}
+
+	public void setGia(double gia) {
+		this.gia = gia;
 	}
 
 	public HoaDonChiTiet() {
@@ -73,5 +86,4 @@ public class HoaDonChiTiet {
 	public void setSanPham(SanPham sanPham) {
 		this.sanPham = sanPham;
 	}
-
 }

@@ -14,4 +14,7 @@ public interface SanPhamDAO {
 	void update(SanPham sanPham);
 
 	void deleteByMaSp(String maSp);
+	
+	List<SanPham> listSP();
+
 }

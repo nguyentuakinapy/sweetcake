@@ -28,18 +28,10 @@
 							class="nav-link dropdown-toggle" href="#" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false"> Danh Mục </a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Bánh sinh nhật</a></li>
-								<li><a class="dropdown-item" href="#">Bánh mỳ </a></li>
-								<li><a class="dropdown-item" href="#">Bánh tươi </a></li>
-								<li><a class="dropdown-item" href="#">Bánh ngọt </a></li>
-								<li><a class="dropdown-item" href="#">Bánh quy khô </a></li>
-								<li><a class="dropdown-item" href="#">Chocolate</a></li>
-								<li><a class="dropdown-item" href="#">Bánh miếng nhỏ </a></li>
-								<li><a class="dropdown-item" href="#">Bánh trung thu </a></li>
-								<li><a class="dropdown-item" href="#">Bánh truyền thống</a></li>
-								<li><a class="dropdown-item" href="#">Bánh mỳ đông lạnh
-								</a></li>
-								<li><a class="dropdown-item" href="#">Bánh Giáng sinh</a></li>
+								<c:forEach var="lb" items="${lbList}">
+									<li><a class="dropdown-item"
+										href="${url}loaibanh/${lb.maLoaiBanh}">${lb.tenLoaiBanh}</a></li>
+								</c:forEach>
 							</ul></li>
 						<li class="nav-item"><a class="nav-link" href="#">Tài
 								Khoản </a></li>

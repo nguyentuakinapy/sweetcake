@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sweetcake.dao.LoaiBanhDAO;
+import com.sweetcake.dao.LoaiBanhDAOImplements;
 import com.sweetcake.dao.SanPhamDAO;
 import com.sweetcake.dao.SanPhamDAOImplements;
 import com.sweetcake.entity.SanPham;
@@ -19,6 +21,7 @@ import com.sweetcake.utils.JpaUtils;
 		"/sweetcake/logout", "/sweetcake/category" })
 public class HomePages extends HttpServlet {
 	private SanPhamDAO spDao = new SanPhamDAOImplements();
+	private LoaiBanhDAO lbDao = new LoaiBanhDAOImplements();
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -76,6 +79,8 @@ public class HomePages extends HttpServlet {
 	}
 
 	private void doHome(HttpServletRequest req, HttpServletResponse resp) {
+		req.setAttribute("lbList", lbDao.findAll());
+
 		req.setAttribute("views", "/views/layout/main.jsp");
 	}
 }

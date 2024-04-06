@@ -18,7 +18,7 @@ public class LoaiBanhDAOImplements implements LoaiBanhDAO {
 	}
 
 	@Override
-	public LoaiBanh findByID(String maLoaiBanh) {
+	public LoaiBanh findByID(Integer maLoaiBanh) {
 		return em.find(LoaiBanh.class, maLoaiBanh);
 	}
 

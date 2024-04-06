@@ -7,7 +7,7 @@ import com.sweetcake.entity.LoaiBanh;
 public interface LoaiBanhDAO {
 	List<LoaiBanh> findAll();
 
-	LoaiBanh findByID(String maLoaiBanh);
+	LoaiBanh findByID(Integer maLoaiBanh);
 
 	void create(LoaiBanh loaiBanh);
 

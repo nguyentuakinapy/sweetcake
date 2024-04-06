@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sweetcake.entity.NguoiDung;
 
-@WebFilter(urlPatterns = { "/sweetcake/admin/home" })
+@WebFilter(urlPatterns = { "/sweetcake/admin/*" })
 public class BlockUserFilter implements Filter {
 	@Override
 	public void destroy() {
@@ -32,9 +32,10 @@ public class BlockUserFilter implements Filter {
 		} else {
 			if (user.getVaiTro() != 1) {
 				resp.sendRedirect(req.getContextPath() + "/sweetcake/home");
+			} else {
+				chain.doFilter(request, response);
 			}
 		}
-		chain.doFilter(request, response);
 	}
 
 	@Override

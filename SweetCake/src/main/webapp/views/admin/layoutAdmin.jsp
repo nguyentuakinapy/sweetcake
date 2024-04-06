@@ -63,17 +63,17 @@
 		</div>
 		<hr>
 		<ul class="app-menu">
-			<li><a class="app-menu__item " href="#"><i
+			<li><a class="app-menu__item " href="${url}admin/billproduct"><i
 					class='app-menu__icon bx bx-cart-alt'></i> <span
 					class="app-menu__label">Hóa đơn</span></a></li>
-			<li><a class="app-menu__item " href="${url}admin/editproduct"><i
+			<li><a class="app-menu__item " href="${url}admin/listproduct"><i
 					class='app-menu__icon bx bx-tachometer'></i><span
 					class="app-menu__label">Sản phẩm</span></a></li>
 			<!--  actice -->
-			<li><a class="app-menu__item" href="#"><i
+			<li><a class="app-menu__item" href="${url}admin/category"><i
 					class='app-menu__icon bx bx-id-card'> </i> <span
 					class="app-menu__label">Loại bánh</span></a></li>
-			<li><a class="app-menu__item" href="#"><i
+			<li><a class="app-menu__item" href="${url}admin/listnguoidung"><i
 					class='app-menu__icon bx bx-user-voice'></i><span
 					class="app-menu__label">Người dùng</span></a></li>
 			<li><a class="app-menu__item" href="#"><i
@@ -82,7 +82,7 @@
 			<li><a class="app-menu__item" href="#"><i
 					class='app-menu__icon bx bx-task'></i><span class="app-menu__label">Đơn
 						hàng</span></a></li>
-	
+
 			<li><a class="app-menu__item" href="${url}home"><i
 					class='app-menu__icon bx bx-run'></i><span class="app-menu__label">Về
 						trang chủ </span></a></li>

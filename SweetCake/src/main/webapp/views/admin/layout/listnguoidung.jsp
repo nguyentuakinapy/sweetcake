@@ -6,7 +6,7 @@
 	<div class="app-title">
 		<ul class="app-breadcrumb breadcrumb side">
 			<li class="breadcrumb-item active"><a href="#"><b>Danh
-						sách </b></a></li>
+						sách người dùng</b></a></li>
 		</ul>
 		<div id="clock"></div>
 	</div>
@@ -59,27 +59,31 @@
 						<thead>
 							<tr>
 								<th width="10"><input type="checkbox" id="all"></th>
-								<th width="180">Tên bánh</th>
-								<th width="60">Ảnh</th>
-								<th width="200">Mô tả</th>
-								<th width="80">Hạn sử dụng</th>
-								<th width="90">Giá</th>
-								<th width="80">Trạng thái</th>
-								<th width="80">Loại bánh</th>
+								<th width="150">Tên đăng nhập</th>
+								<th width="100">Mật khẩu</th>
+								<th width="300">Họ và tên</th>
+								<th width="120">Giới tinh</th>
+								<th width="90">Email</th>
+								<th width="80">Số điện thoại</th>
+								<th width="150">Vai trò</th>
+								<th width="100">Địa chỉ</th>
+								<th width="100">Khác</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="hotel" items="${listHotel}">
+							<c:forEach var="nd" items="${ndList}">
 								<tr>
 									<td width="10"><input type="checkbox" name="check1"
 										value="1"></td>
-									<td>${hotel.hotelID}</td>
-									<td>${hotel.name}</td>
-									<td><img class="img-card-person" src="" alt=""></td>
-									<td>${hotel.location}</td>
-									<td>${hotel.stars}</td>
-									<td>${hotel.description}</td>
-									<td class="table-td-center"><button
+									<td>${nd.maNguoiDung}</td>
+									<td>${nd.matKhau}</td>
+									<td>${nd.hoTen}</td>
+									<td>${nd.gioiTinh == 0 ? "Nam" : "Nữ"}</td>
+									<td>${nd.email}</td>
+									<td>${nd.soDienThoai}</td>
+									<td>${nd.vaiTro == 1 ? "Admin" : "Khách hàng"}</td>
+									<td>${nd.diaChi}</td>
+									<td class="table-td-center text-center"><button
 											class="btn btn-primary btn-sm trash" type="button"
 											title="Xóa">
 											<i class="fas fa-trash-alt"></i>

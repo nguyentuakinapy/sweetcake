@@ -4,20 +4,11 @@
 <%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <header class="container" style="box-shadow: 20px gray;">
 	<div class="center_header text-center row mt-3">
-    <div class="col-3">
+    <div class="col-2">
         <a href="${url}home"><img src="https://theme.hstatic.net/1000104153/1001164818/14/logo.png?v=62" alt="" style="width: 130px; height: 130px;"></a>
     </div>
-    <div class="col-3 d-flex align-items-center justify-content-center py-0"> <!-- Thay đổi col-4 thành col-3 -->
-        <div class="bottom_header text-center">
-            <form class="m-auto" role="search">
-                <div class="input-group m-0">
-                    <input class="form-control inputSearch" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="col-6 d-flex align-items-center justify-content-center py-0"> <!-- Thay đổi col-5 thành col-6 -->
+    
+    <div class="col-7 d-flex align-items-center justify-content-center py-0"> <!-- Thay đổi col-5 thành col-6 -->
         <nav class="navbar navbar-expand-lg">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,6 +35,16 @@
                 </ul>
             </div>
         </nav>
+    </div>
+    <div class="col-3 d-flex align-items-center justify-content-center py-0"> <!-- Thay đổi col-4 thành col-3 -->
+        <div class="bottom_header text-center">
+            <form class="m-auto" role="search">
+                <div class="input-group m-0">
+                    <input class="form-control inputSearch" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

@@ -70,6 +70,9 @@
 									<li><a class="dropdown-item" href="">Cập nhật tài
 											khoản</a></li>
 								</c:if>
+								<c:if test="${isloginUs.vaiTro == 1}">
+									<li><a class="dropdown-item" href="${url}admin/home">Quản lý</a></li>
+								</c:if>
 							</ul></li>
 						<li class="nav-item nav-head"><a class="nav-link" href="#"><i
 								class="bi bi-bag-check me-2"></i>Giỏ Hàng</a></li>

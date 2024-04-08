@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Servlet implementation class SanPhamServlet
  */
-@WebServlet({ "/sweetcake/product/list", "/sweetcake/product/detail" })
+@WebServlet({ "/sweetcake/product/list", "/sweetcake/product/detail/*" })
 public class SanPhamServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private LoaiBanhDAO lbDao = new LoaiBanhDAOImplements();
@@ -34,18 +34,22 @@ public class SanPhamServlet extends HttpServlet {
 			});
 			req.setAttribute("list", products);
 			req.setAttribute("views", "/views/user/list.jsp");
-		} else {
+		} else if (path.contains("detail")) {
+			String idCake = req.getPathInfo().substring(1);
+			req.setAttribute("cakeDetail", spdao.findByID(idCake));
+			req.setAttribute("views", "/views/user/detail.jsp");
+		}
+
 //				if (path.contains("detail")) {
 //				String videoId = req.getPathInfo().substring(1);
 //				Video video = vdao.findById(videoId);
 //				req.setAttribute("video", video);
-			//
+		//
 //				User user = (User) req.getSession().getAttribute("user");
 ////				List<Favorite> favorites = fdao.findByUsername(user.getId());
 //				List<Favorite> favorites = fdao.findByUsername("myntd");
 //				req.setAttribute("favorites", favorites);
 //				req.setAttribute("page", "video/detail.jsp");
-		}
 
 		req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
 	}

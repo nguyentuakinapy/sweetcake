@@ -60,6 +60,7 @@
 								<div class="button-container d-flex">
 									<a class="btn btn-success mx-1"><i
 										class="bi bi-currency-dollar"></i></a> <a
+										href="${url}product/detail/${sp.maSp}"
 										class="btn btn-warning mx-1"><i
 										class="bi bi-ticket-detailed"></i></a> <a
 										class="btn btn-danger mx-1"><i class="bi bi-bag-plus"></i></a>

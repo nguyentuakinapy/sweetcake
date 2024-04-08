@@ -11,9 +11,15 @@
 		<div id="clock"></div>
 	</div>
 
-	<form class="tile">
+	<form class="tile" method="post">
 		<div class="row">
 			<div class="col-8">
+				<div class="d-flex justify-content-between">
+					<button class="btn btn-add" formaction="${url}admin/update">
+						Cập nhật</button>
+					<a class="btn btn-success" href="${url}admin/listproduct">Quay
+						lại</a>
+				</div>
 				<div class="mb-3">
 					<label class="form-label">Mã sản phẩm</label> <input type="text"
 						name="maSp" value="${sanpham.maSp}" class="form-control"
@@ -56,10 +62,6 @@
 			</div>
 			<div class="col-4">
 				<img alt="" class="w-100" src="${sanpham.hinhAnh}">
-				<div class="d-flex justify-content-between">
-					<button class="btn btn-add">Sửa ngay</button>
-					<a class="btn btn-success" href="${url}admin/listproduct">Quay lại</a>
-				</div>
 			</div>
 
 		</div>

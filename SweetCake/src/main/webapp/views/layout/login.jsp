@@ -20,12 +20,12 @@
 						<label for="exampleFormControlInput1" class="form-label">Tên
 							người dùng</label> <input type="text" class="form-control"
 							id="exampleFormControlInput1" placeholder="Thanhsaumui"
-							name="username">
+							value="${username}" name="username">
 					</div>
 					<div class="mb-3">
 						<label for="exampleFormControlInput1" class="form-label">Mật
 							khẩu</label> <input type="password" name="password" class="form-control"
-							id="exampleFormControlInput1">
+							value="${password}" id="exampleFormControlInput1">
 					</div>
 					<div class="row d-flex">
 						<div class="col-6 forch">

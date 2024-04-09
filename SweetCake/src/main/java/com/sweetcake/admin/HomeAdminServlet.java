@@ -53,9 +53,9 @@ public class HomeAdminServlet extends HttpServlet {
 
 	private void doListNguoiDung(HttpServletRequest req, HttpServletResponse resp) {
 		List<NguoiDung> ndList = ndDao.findAll();
-		req.setAttribute("ndList", ndList);  
+		req.setAttribute("ndList", ndList);
 		req.setAttribute("viewadmin", "/views/admin/layout/listnguoidung.jsp");
-	} 
+	}
 
 	private void doBillProduct(HttpServletRequest req, HttpServletResponse resp) {
 		List<HoaDon> hdList = hdDao.findAll();

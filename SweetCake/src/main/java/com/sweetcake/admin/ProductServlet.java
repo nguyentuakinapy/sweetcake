@@ -23,7 +23,7 @@ import com.sweetcake.entity.LoaiBanh;
 import com.sweetcake.entity.SanPham;
 
 @WebServlet({ "/sweetcake/admin/editproduct/*", "/sweetcake/admin/listproduct", "/sweetcake/admin/create",
-		"/sweetcake/admin/update", "/sweetcake/admin/delete" })
+		"/sweetcake/admin/update", "/sweetcake/admin/newproduct" })
 public class ProductServlet extends HttpServlet {
 	private SanPhamDAO spDao = new SanPhamDAOImplements();
 	private LoaiBanhDAO lbDao = new LoaiBanhDAOImplements();
@@ -63,15 +63,34 @@ public class ProductServlet extends HttpServlet {
 			SanPham sp1 = spDao.findByID(req.getPathInfo().substring(1));
 			req.setAttribute("sanpham", sp1);
 			req.setAttribute("viewadmin", "/views/admin/sanpham/detailproduct.jsp");
+		} else if (req.getServletPath().contains("newproduct")) {
+			this.newProduct(req, resp);
 		} else if (req.getServletPath().contains("create")) {
-			req.setAttribute("viewadmin", "/views/admin/sanpham/newproduct.jsp");
+			spDao.create(sp);
+			resp.sendRedirect(req.getContextPath() + "/sweetcake/admin/listproduct");
+			return;
 		} else if (req.getServletPath().contains("update")) {
 			spDao.update(sp);
 			resp.sendRedirect(req.getContextPath() + "/sweetcake/admin/listproduct");
+			return;
 		}
 		if (!resp.isCommitted()) {
 			req.getRequestDispatcher("/views/admin/layoutAdmin.jsp").forward(req, resp);
 		}
+	}
+
+	private void newProduct(HttpServletRequest req, HttpServletResponse resp) {
+		List<SanPham> spCheck = spDao.findAll();
+		String maSp = spCheck.get(spCheck.size() - 1).getMaSp();
+		String subString = maSp.substring(2);
+		int maSpCount = Integer.parseInt(subString) + 1;
+		if (maSpCount < 100) {
+			req.setAttribute("maSp", "SP0" + maSpCount);
+		} else {
+			req.setAttribute("maSp", "SP" + maSpCount);
+		}
+		System.out.println(maSpCount);
+		req.setAttribute("viewadmin", "/views/admin/sanpham/newproduct.jsp");
 	}
 
 //	public boolean checkDetailProduct(HttpServletRequest req, HttpServletResponse resp, SanPham sp) {

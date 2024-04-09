@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import com.sweetcake.dao.NguoiDungDAO;
 import com.sweetcake.dao.NguoiDungDAOImplements;
 import com.sweetcake.dao.SanPhamDAO;
@@ -55,15 +57,50 @@ public class HomePages extends HttpServlet {
 	}
 
 	private void doRegister(HttpServletRequest req, HttpServletResponse resp) {
-
+		// TODO Auto-generated method stub
+		if (req.getMethod().equals("post")) {
+			NguoiDungDAO NDdao = new NguoiDungDAOImplements();
+			try {
+				NguoiDung user = new NguoiDung();
+				BeanUtils.populate(user, req.getParameterMap());
+				req.setAttribute("user", user);
+				String repassword = req.getParameter("repassword");
+				System.out.print("" + repassword);
+				if (user.getMaNguoiDung().equals("")) {
+					req.setAttribute("check", "Không để trống tên đăng nhập!");
+				} else if (user.getMatKhau().equals("")) {
+					req.setAttribute("check", "Không để trống mật khẩu!");
+				} else if (user.getHoTen().equals("")) {
+					req.setAttribute("check", "Không để trống họ và tên!");
+				} else if (user.getEmail().equals("")) {
+					req.setAttribute("check", "Không để trống email!");
+				} else {
+					if (!user.getMatKhau().equals(repassword)) {
+						req.setAttribute("check", "Mật khẩu nhập lại không khớp!");
+					} else {
+						NDdao.create(user);
+						req.getSession().setAttribute("loggedInUser", user);
+						resp.sendRedirect(req.getContextPath() + "/sweetcake/home");
+					}
+				}
+			} catch (Exception e) {
+				// Xử lý ngoại lệ
+				req.setAttribute("check", "Đã xảy ra lỗi: " + e.getMessage());
+			}
+		}
 		req.setAttribute("views", "/views/layout/register.jsp");
 	}
 
 	private void doLogin(HttpServletRequest req, HttpServletResponse resp) {
+		String username = CookieUtils.get("username", req);
+		String password = CookieUtils.get("password", req);
+
+		req.setAttribute("username", username);
+		req.setAttribute("password", password);
 		if (req.getMethod().equals("POST")) {
 			NguoiDungDAO NDdao = new NguoiDungDAOImplements();
-			String username = req.getParameter("username");
-			String password = req.getParameter("password");
+			username = req.getParameter("username");
+			password = req.getParameter("password");
 			if (!username.isEmpty() && !password.isEmpty()) {
 				try {
 					NguoiDung user = NDdao.findByID(username);

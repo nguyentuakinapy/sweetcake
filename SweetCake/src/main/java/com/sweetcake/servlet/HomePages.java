@@ -1,12 +1,15 @@
 package com.sweetcake.servlet;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.beanutils.BeanUtils;
 
 import com.sweetcake.dao.NguoiDungDAO;
 import com.sweetcake.dao.NguoiDungDAOImplements;
@@ -55,8 +58,41 @@ public class HomePages extends HttpServlet {
 	}
 
 	private void doRegister(HttpServletRequest req, HttpServletResponse resp) {
-
+		NguoiDungDAO NDdao = new NguoiDungDAOImplements();
+		NguoiDung user;
+		if (req.getMethod().equals("POST")) {
+			try {
+				user = new NguoiDung();
+				BeanUtils.populate(user, req.getParameterMap());
+				req.setAttribute("user", user);
+				String repassword = req.getParameter("repassword");
+				System.out.print("" + repassword);
+				if (user.getMaNguoiDung().equals("")) {
+					req.setAttribute("check", "Không để trống tên đăng nhập!");
+				} else if (user.getMatKhau().equals("")) {
+					req.setAttribute("check", "Không để trống mật khẩu!");
+				} else if (user.getHoTen().equals("")) {
+					req.setAttribute("check", "Không để trống họ và tên!");
+				} else if (user.getEmail().equals("")) {
+					req.setAttribute("check", "Không để trống email!");
+				} else {
+					if (!user.getMatKhau().equals(repassword)) {
+						req.setAttribute("check", "Mật khẩu nhập lại không khớp!");
+					} else {
+						NDdao.create(user);
+						req.getSession().setAttribute("loggedInUser", user);
+						System.out.println(""+user.getHoTen());
+						resp.sendRedirect(req.getContextPath() + "/sweetcake/home");
+					}
+				}
+			} catch (
+			Exception e) {
+				// Xử lý ngoại lệ
+				req.setAttribute("check", "Đã xảy ra lỗi: " + e.getMessage());
+			}
+		}
 		req.setAttribute("views", "/views/layout/register.jsp");
+
 	}
 
 	private void doLogin(HttpServletRequest req, HttpServletResponse resp) {

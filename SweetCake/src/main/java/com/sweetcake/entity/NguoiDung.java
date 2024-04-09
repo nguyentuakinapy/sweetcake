@@ -26,7 +26,7 @@ public class NguoiDung {
 	String hoTen;
 
 	@Column(name = "GioiTinh")
-	Integer gioiTinh;
+	Integer gioiTinh=1;
 
 	@Column(name = "Email")
 	String email;
@@ -35,7 +35,7 @@ public class NguoiDung {
 	String soDienThoai;
 
 	@Column(name = "VaiTro")
-	Integer vaiTro;
+	Integer vaiTro=0;
 
 	@Column(name = "DiaChi")
 	String diaChi;

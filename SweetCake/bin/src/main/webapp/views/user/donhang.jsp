@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 
-<div class="container mt-3">
+<div class="container mt-3" style="border-top: 2px solid #F0EBEA;">
 	<div class="card w-75" style="margin: 0 auto;">
 		<div class="row">
 			<div class="col-md-3 d-flex align-items-center">

@@ -58,50 +58,42 @@ public class HomePages extends HttpServlet {
 	}
 
 	private void doRegister(HttpServletRequest req, HttpServletResponse resp) {
-<<<<<<< HEAD
-		NguoiDungDAO NDdao = new NguoiDungDAOImplements();
 		NguoiDung user;
 		if (req.getMethod().equals("POST")) {
 			try {
 				user = new NguoiDung();
-=======
-		// TODO Auto-generated method stub
-		if (req.getMethod().equals("post")) {
-			NguoiDungDAO NDdao = new NguoiDungDAOImplements();
-			try {
-				NguoiDung user = new NguoiDung();
->>>>>>> 8cb9a91a40692cc60a0ffb95190299df6b960f53
-				BeanUtils.populate(user, req.getParameterMap());
-				req.setAttribute("user", user);
-				String repassword = req.getParameter("repassword");
-				System.out.print("" + repassword);
-				if (user.getMaNguoiDung().equals("")) {
-					req.setAttribute("check", "Không để trống tên đăng nhập!");
-				} else if (user.getMatKhau().equals("")) {
-					req.setAttribute("check", "Không để trống mật khẩu!");
-				} else if (user.getHoTen().equals("")) {
-					req.setAttribute("check", "Không để trống họ và tên!");
-				} else if (user.getEmail().equals("")) {
-					req.setAttribute("check", "Không để trống email!");
-				} else {
-					if (!user.getMatKhau().equals(repassword)) {
-						req.setAttribute("check", "Mật khẩu nhập lại không khớp!");
-					} else {
-						NDdao.create(user);
-						req.getSession().setAttribute("loggedInUser", user);
-<<<<<<< HEAD
-						System.out.println(""+user.getHoTen());
-						resp.sendRedirect(req.getContextPath() + "/sweetcake/home");
-					}
-				}
-			} catch (
-			Exception e) {
-=======
+				// TODO Auto-generated method stub
+				if (req.getMethod().equals("post")) {
+					NguoiDungDAO NDdao = new NguoiDungDAOImplements();
+					try {
+						NguoiDung user1 = new NguoiDung();
+						BeanUtils.populate(user1, req.getParameterMap());
+						req.setAttribute("user", user1);
+						String repassword = req.getParameter("repassword");
+						System.out.print("" + repassword);
+						if (user.getMaNguoiDung().equals("")) {
+							req.setAttribute("check", "Không để trống tên đăng nhập!");
+						} else if (user.getMatKhau().equals("")) {
+							req.setAttribute("check", "Không để trống mật khẩu!");
+						} else if (user.getHoTen().equals("")) {
+							req.setAttribute("check", "Không để trống họ và tên!");
+						} else if (user.getEmail().equals("")) {
+							req.setAttribute("check", "Không để trống email!");
+						} else {
+							if (!user.getMatKhau().equals(repassword)) {
+								req.setAttribute("check", "Mật khẩu nhập lại không khớp!");
+							} else {
+								NDdao.create(user);
+								req.getSession().setAttribute("loggedInUser", user);
+								System.out.println("" + user.getHoTen());
+								resp.sendRedirect(req.getContextPath() + "/sweetcake/home");
+							}
+						}
+					} catch (Exception e) {
 						resp.sendRedirect(req.getContextPath() + "/sweetcake/home");
 					}
 				}
 			} catch (Exception e) {
->>>>>>> 8cb9a91a40692cc60a0ffb95190299df6b960f53
 				// Xử lý ngoại lệ
 				req.setAttribute("check", "Đã xảy ra lỗi: " + e.getMessage());
 			}

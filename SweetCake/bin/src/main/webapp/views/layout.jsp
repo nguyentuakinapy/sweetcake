@@ -22,8 +22,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
-<c:set var="url"
-	value="${pageContext.request.contextPath}/sweetcake/"
+<c:set var="url" value="${pageContext.request.contextPath}/sweetcake/"
 	scope="request"></c:set>
 <c:set var="urlimg" value="${pageContext.request.contextPath}/images/"
 	scope="request"></c:set>
@@ -35,4 +34,25 @@
 	<jsp:include page="/views/layout/footer.jsp"></jsp:include>
 </body>
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+	function loadMore() {
+
+		var amount1 = document.getElementsByClassName("countproduct").length;
+		$.ajax({
+			url : "${url}loadmore",
+			type : "get",
+			data : {
+				amount : amount1
+			},
+			success : function(data) {
+				document.getElementById("product").innerHTML += data;
+			},
+			error : function(xhr) {
+				// Xử lý lỗi nếu cần
+			}
+		});
+	}
+</script>
 </html>

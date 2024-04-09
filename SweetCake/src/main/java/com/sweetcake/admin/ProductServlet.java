@@ -24,7 +24,7 @@ import com.sweetcake.entity.SanPham;
 
 @WebServlet({ "/sweetcake/admin/editproduct/*", "/sweetcake/admin/listproduct", "/sweetcake/admin/create",
 		"/sweetcake/admin/update", "/sweetcake/admin/delete" })
-public class EditProductServlet extends HttpServlet {
+public class ProductServlet extends HttpServlet {
 	private SanPhamDAO spDao = new SanPhamDAOImplements();
 	private LoaiBanhDAO lbDao = new LoaiBanhDAOImplements();
 
@@ -36,7 +36,7 @@ public class EditProductServlet extends HttpServlet {
 			DateConverter converter = new DateConverter();
 			converter.setPattern("yyyy-MM-dd");
 			ConvertUtils.register(converter, Date.class);
-			
+
 			BeanUtils.populate(sp, req.getParameterMap());
 			String maLoaiBanh = req.getParameter("maloaiBanh");
 			if (maLoaiBanh != null) {
@@ -64,6 +64,7 @@ public class EditProductServlet extends HttpServlet {
 			req.setAttribute("sanpham", sp1);
 			req.setAttribute("viewadmin", "/views/admin/sanpham/detailproduct.jsp");
 		} else if (req.getServletPath().contains("create")) {
+			req.setAttribute("viewadmin", "/views/admin/sanpham/newproduct.jsp");
 		} else if (req.getServletPath().contains("update")) {
 			spDao.update(sp);
 			resp.sendRedirect(req.getContextPath() + "/sweetcake/admin/listproduct");

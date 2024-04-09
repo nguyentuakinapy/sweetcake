@@ -14,9 +14,9 @@
 			<div class="text-center h3 text-primary mt-4">
 				<span>Sản Phẩm Mới</span>
 			</div>
-			<div class="row">
+			<div class="row" id="product">
 				<c:forEach var="sp" items="${list}">
-					<div class="col-md-4 my-3">
+					<div class="col-md-4 my-3 countproduct">
 						<div class="card ">
 							<div class="card-body">
 								<a
@@ -36,7 +36,8 @@
 			</div>
 
 			<div class="view text-center mt-5">
-				<button class=" btn btn-danger">Xem thêm</button>
+				<button class=" btn btn-danger" onclick="loadMore()">Xem
+					thêm</button>
 			</div>
 		</div>
 	</div>

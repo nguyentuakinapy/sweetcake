@@ -14,7 +14,9 @@ public interface SanPhamDAO {
 	void update(SanPham sanPham);
 
 	void deleteByMaSp(String maSp);
-	
+
 	List<SanPham> listSP();
+
+	List<SanPham> findTop3(int index);
 
 }

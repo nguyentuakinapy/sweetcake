@@ -28,7 +28,7 @@ public class SanPhamServlet extends HttpServlet {
 		req.setAttribute("lbList", lbDao.findAll());
 
 		if (path.contains("list")) {
-			List<SanPham> products = spdao.listSP();
+			List<SanPham> products = spdao.findTop3(0);
 			products.forEach(f -> {
 				System.out.println(f.getTenSp());
 			});

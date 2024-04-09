@@ -1,24 +1,20 @@
 package com.sweetcake.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sweetcake.dao.LoaiBanhDAO;
-import com.sweetcake.dao.LoaiBanhDAOImplements;
 import com.sweetcake.dao.NguoiDungDAO;
 import com.sweetcake.dao.NguoiDungDAOImplements;
 import com.sweetcake.dao.SanPhamDAO;
 import com.sweetcake.dao.SanPhamDAOImplements;
 import com.sweetcake.entity.NguoiDung;
-import com.sweetcake.entity.SanPham;
-import com.sweetcake.utils.JpaUtils;
+
+import com.sweetcake.utils.CookieUtils;
 
 @WebServlet({ "/sweetcake/home", "/sweetcake/product", "/sweetcake/search", "/sweetcake/login", "/sweetcake/register",
 		"/sweetcake/logout", "/sweetcake/category" })
@@ -26,7 +22,7 @@ public class HomePages extends HttpServlet {
 	private SanPhamDAO spDao = new SanPhamDAOImplements();
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (req.getServletPath().contains("home")) {
 			this.doHome(req, resp);
 		} else if (req.getServletPath().contains("product")) {
@@ -59,8 +55,7 @@ public class HomePages extends HttpServlet {
 	}
 
 	private void doRegister(HttpServletRequest req, HttpServletResponse resp) {
-		
-		
+
 		req.setAttribute("views", "/views/layout/register.jsp");
 	}
 
@@ -74,6 +69,9 @@ public class HomePages extends HttpServlet {
 					NguoiDung user = NDdao.findByID(username);
 					if (user != null && user.getMatKhau().equals(password)) {
 						req.getSession().setAttribute("isloginUs", user);
+						int hours = (req.getParameter("remember") == null) ? 0 : 30 * 24;
+						CookieUtils.add("username", username, hours, resp);
+						CookieUtils.add("password", password, hours, resp);
 						if (user.getVaiTro() == 1) {
 							resp.sendRedirect(req.getContextPath() + "/sweetcake/admin/home");
 						} else {

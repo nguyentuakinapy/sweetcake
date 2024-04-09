@@ -30,9 +30,10 @@
 					<div class="row d-flex">
 						<div class="col-6 forch">
 							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value=""
-									id="flexCheckDefault"> <label class="form-check-label"
-									for="flexCheckDefault"> Nhớ mật khẩu </label>
+								<input class="form-check-input" name="remember" type="checkbox"
+									value="" id="flexCheckDefault"> <label
+									class="form-check-label" for="flexCheckDefault"> Nhớ
+									mật khẩu </label>
 							</div>
 						</div>
 						<div class="col-6 quen text-end">

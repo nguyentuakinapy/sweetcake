@@ -61,4 +61,11 @@ public class SanPhamDAOImplements implements SanPhamDAO {
 		TypedQuery<SanPham> query = em.createQuery(jpql, SanPham.class);
 		return query.getResultList();
 	}
+
+	@Override
+	public List<SanPham> findTop3(int index) {
+		String jpql = "select o from SanPham o where o.trangThai = 1";
+		TypedQuery<SanPham> query = em.createQuery(jpql, SanPham.class).setFirstResult(index).setMaxResults(3);
+		return query.getResultList();
+	}
 }

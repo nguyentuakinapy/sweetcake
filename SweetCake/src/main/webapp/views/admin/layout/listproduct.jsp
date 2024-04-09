@@ -18,9 +18,8 @@
 
 					<div class="row element-button">
 						<div class="col-sm-2">
-
-							<a class="btn btn-add btn-sm" href="#" title="Thêm"><i
-								class="fas fa-plus"></i> Tạo mới</a>
+							<a class="btn btn-add btn-sm" href="${url}admin/create"
+								title="Thêm"><i class="fas fa-plus"></i> Thêm bánh</a>
 						</div>
 						<div class="col-sm-2">
 							<a class="btn btn-delete btn-sm nhap-tu-file" type="button"

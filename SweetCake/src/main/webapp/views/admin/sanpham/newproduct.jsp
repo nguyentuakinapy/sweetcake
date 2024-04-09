@@ -5,8 +5,8 @@
 <main class="app-content">
 	<div class="app-title">
 		<ul class="app-breadcrumb breadcrumb side">
-			<li class="breadcrumb-item active"><a href="#"><b>Thông
-						tin sản phẩm: ${sanpham.tenSp}</b></a></li>
+			<li class="breadcrumb-item active"><a href="#"><b>Thêm
+						mới sản phẩm</b></a></li>
 		</ul>
 		<div id="clock"></div>
 	</div>
@@ -15,8 +15,8 @@
 		<div class="row">
 			<div class="col-8">
 				<div class="d-flex justify-content-between">
-					<button class="btn btn-add" formaction="${url}admin/update">
-						Cập nhật</button>
+					<button class="btn btn-add" formaction="${url}admin/create">
+						Thêm mới</button>
 					<a class="btn btn-success" href="${url}admin/listproduct">Quay
 						lại</a>
 				</div>

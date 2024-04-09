@@ -58,11 +58,19 @@ public class HomePages extends HttpServlet {
 	}
 
 	private void doRegister(HttpServletRequest req, HttpServletResponse resp) {
+<<<<<<< HEAD
 		NguoiDungDAO NDdao = new NguoiDungDAOImplements();
 		NguoiDung user;
 		if (req.getMethod().equals("POST")) {
 			try {
 				user = new NguoiDung();
+=======
+		// TODO Auto-generated method stub
+		if (req.getMethod().equals("post")) {
+			NguoiDungDAO NDdao = new NguoiDungDAOImplements();
+			try {
+				NguoiDung user = new NguoiDung();
+>>>>>>> 8cb9a91a40692cc60a0ffb95190299df6b960f53
 				BeanUtils.populate(user, req.getParameterMap());
 				req.setAttribute("user", user);
 				String repassword = req.getParameter("repassword");
@@ -81,12 +89,19 @@ public class HomePages extends HttpServlet {
 					} else {
 						NDdao.create(user);
 						req.getSession().setAttribute("loggedInUser", user);
+<<<<<<< HEAD
 						System.out.println(""+user.getHoTen());
 						resp.sendRedirect(req.getContextPath() + "/sweetcake/home");
 					}
 				}
 			} catch (
 			Exception e) {
+=======
+						resp.sendRedirect(req.getContextPath() + "/sweetcake/home");
+					}
+				}
+			} catch (Exception e) {
+>>>>>>> 8cb9a91a40692cc60a0ffb95190299df6b960f53
 				// Xử lý ngoại lệ
 				req.setAttribute("check", "Đã xảy ra lỗi: " + e.getMessage());
 			}
@@ -96,10 +111,15 @@ public class HomePages extends HttpServlet {
 	}
 
 	private void doLogin(HttpServletRequest req, HttpServletResponse resp) {
+		String username = CookieUtils.get("username", req);
+		String password = CookieUtils.get("password", req);
+
+		req.setAttribute("username", username);
+		req.setAttribute("password", password);
 		if (req.getMethod().equals("POST")) {
 			NguoiDungDAO NDdao = new NguoiDungDAOImplements();
-			String username = req.getParameter("username");
-			String password = req.getParameter("password");
+			username = req.getParameter("username");
+			password = req.getParameter("password");
 			if (!username.isEmpty() && !password.isEmpty()) {
 				try {
 					NguoiDung user = NDdao.findByID(username);

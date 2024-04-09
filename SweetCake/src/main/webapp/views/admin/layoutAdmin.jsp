@@ -11,6 +11,19 @@
 	scope="request"></c:set>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- BOOTSTRAPS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+	crossorigin="anonymous"></script>
+<!-- ICON -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Main CSS-->
 <link rel="stylesheet" type="text/css"
@@ -158,26 +171,9 @@
 			</div>
 		</div>
 	</div>
-	<!--
-  MODAL
--->
-
-	<!-- Essential javascripts for application to work-->
-	<!-- <script src="js/jquery-3.2.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>-->
 	<script
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	-->
-	<!-- <script src="src/jquery.table2excel.js"></script>
-  <script src="js/main.js"></script> 
 
-  <script src="js/plugins/pace.min.js"></script> -->
-	<!-- Page specific javascripts-->
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script> -->
-	<!-- Data table plugin-->
-	<!-- <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script> -->
 	<script>
     function deleteRow(r) {
       var i = r.parentNode.parentNode.rowIndex;
@@ -200,14 +196,7 @@
           });
       });
     });
-    // oTable = $('#sampleTable').dataTable();
-    // $('#all').click(function (e) {
-    //   $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));
-    //   e.stopImmediatePropagation();
-    // });
-
-
-    //Thời Gian
+   
     function time() {
       var today = new Date();
       var weekday = new Array(7);
@@ -274,11 +263,10 @@
       }
     });
 
-
-    //Modal
     $("#show-emp").on("click", function () {
       $("#ModalUP").modal({ backdrop: false, keyboard: false })
     }); 
+  
   </script>
 </body>
 

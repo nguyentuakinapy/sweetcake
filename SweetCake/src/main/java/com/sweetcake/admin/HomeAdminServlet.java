@@ -22,8 +22,8 @@ import com.sweetcake.entity.LoaiBanh;
 import com.sweetcake.entity.NguoiDung;
 import com.sweetcake.entity.SanPham;
 
-@WebServlet({ "/sweetcake/admin/home", "/sweetcake/admin/listproduct", "/sweetcake/admin/billproduct",
-		"/sweetcake/admin/listnguoidung", "/sweetcake/admin/category" })
+@WebServlet({ "/sweetcake/admin/home", "/sweetcake/admin/billproduct", "/sweetcake/admin/listnguoidung",
+		"/sweetcake/admin/category" })
 public class HomeAdminServlet extends HttpServlet {
 	private SanPhamDAO spDao = new SanPhamDAOImplements();
 	private NguoiDungDAO ndDao = new NguoiDungDAOImplements();
@@ -33,9 +33,7 @@ public class HomeAdminServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		if (req.getServletPath().contains("listproduct")) {
-			this.doListProduct(req, resp);
-		} else if (req.getServletPath().contains("billproduct")) {
+		if (req.getServletPath().contains("billproduct")) {
 			this.doBillProduct(req, resp);
 		} else if (req.getServletPath().contains("listnguoidung")) {
 			this.doListNguoiDung(req, resp);
@@ -55,9 +53,9 @@ public class HomeAdminServlet extends HttpServlet {
 
 	private void doListNguoiDung(HttpServletRequest req, HttpServletResponse resp) {
 		List<NguoiDung> ndList = ndDao.findAll();
-		req.setAttribute("ndList", ndList);
+		req.setAttribute("ndList", ndList);  
 		req.setAttribute("viewadmin", "/views/admin/layout/listnguoidung.jsp");
-	}
+	} 
 
 	private void doBillProduct(HttpServletRequest req, HttpServletResponse resp) {
 		List<HoaDon> hdList = hdDao.findAll();

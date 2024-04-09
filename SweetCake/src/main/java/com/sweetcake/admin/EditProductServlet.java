@@ -3,6 +3,7 @@ package com.sweetcake.admin;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,55 +15,76 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.converters.DateConverter;
 
+import com.sweetcake.dao.LoaiBanhDAO;
+import com.sweetcake.dao.LoaiBanhDAOImplements;
 import com.sweetcake.dao.SanPhamDAO;
 import com.sweetcake.dao.SanPhamDAOImplements;
+import com.sweetcake.entity.LoaiBanh;
 import com.sweetcake.entity.SanPham;
 
-@WebServlet({ "/sweetcake/admin/editproduct/*", "/sweetcake/admin/create", "/sweetcake/admin/update",
-		"/sweetcake/admin/delete" })
+@WebServlet({ "/sweetcake/admin/editproduct/*", "/sweetcake/admin/listproduct", "/sweetcake/admin/create",
+		"/sweetcake/admin/update", "/sweetcake/admin/delete" })
 public class EditProductServlet extends HttpServlet {
 	private SanPhamDAO spDao = new SanPhamDAOImplements();
+	private LoaiBanhDAO lbDao = new LoaiBanhDAOImplements();
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		List<SanPham> spList;
 		SanPham sp = new SanPham();
 		try {
 			DateConverter converter = new DateConverter();
 			converter.setPattern("yyyy-MM-dd");
 			ConvertUtils.register(converter, Date.class);
-
+			
 			BeanUtils.populate(sp, req.getParameterMap());
-			System.out.println(sp.getTenSp());
+			String maLoaiBanh = req.getParameter("maloaiBanh");
+			if (maLoaiBanh != null) {
+				int lb = Integer.parseInt(maLoaiBanh);
+				if (sp.getLoaiBanh() == null) {
+					sp.setLoaiBanh(new LoaiBanh());
+				}
+				sp.getLoaiBanh().setMaLoaiBanh(lb);
+			}
+			System.out.println(req.getParameter("maloaiBanh"));
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		if (req.getServletPath().contains("product")) {
+		req.setAttribute("lbList", lbDao.findAll());
+
+		if (req.getServletPath().contains("listproduct")) {
+			spList = spDao.findAll();
+			req.setAttribute("spList", spList);
+
+			req.setAttribute("viewadmin", "/views/admin/layout/listproduct.jsp");
+		} else if (req.getServletPath().contains("product")) {
 			SanPham sp1 = spDao.findByID(req.getPathInfo().substring(1));
 			req.setAttribute("sanpham", sp1);
 			req.setAttribute("viewadmin", "/views/admin/sanpham/detailproduct.jsp");
 		} else if (req.getServletPath().contains("create")) {
 		} else if (req.getServletPath().contains("update")) {
-			this.checkDetailProduct(req, resp, sp);
+			spDao.update(sp);
+			resp.sendRedirect(req.getContextPath() + "/sweetcake/admin/listproduct");
 		}
 		if (!resp.isCommitted()) {
 			req.getRequestDispatcher("/views/admin/layoutAdmin.jsp").forward(req, resp);
 		}
 	}
 
-	public void checkDetailProduct(HttpServletRequest req, HttpServletResponse resp, SanPham sp) {
-		if (sp.getTenSp().equals("")) {
-
-		} else if (sp.getMoTa().equals("")) {
-
-		} else if (sp.getDate().equals("")) {
-
-		} else if (sp.getGia() == 0) {
-
-		} else if (sp.getHinhAnh().equals("")) {
-
-		}
-
-	}
+//	public boolean checkDetailProduct(HttpServletRequest req, HttpServletResponse resp, SanPham sp) {
+//		if (sp.getTenSp().equals("")) {
+//			
+//		} else if (sp.getMoTa().equals("")) {
+//
+//		} else if (sp.getDate().equals("")) {
+//
+//		} else if (sp.getGia() == 0) {
+//
+//		} else if (sp.getHinhAnh().equals("")) {
+//
+//		}
+//		return false;
+//	}
 }

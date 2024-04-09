@@ -36,9 +36,11 @@
 						value="${sanpham.moTa}">
 				</div>
 				<div class="mb-3">
-					<label class="form-label">Hạn sử dụng</label> <input type="date"
-						class="form-control" name="date" value="${sanpham.date}">
+					<label class="form-label">Hạn sử dụng</label> <input type="text"
+						placeholder="yyyy-MM-dd" class="form-control" name="date"
+						value="${sanpham.date}">
 				</div>
+
 				<div class="mb-3">
 					<label class="form-label">Giá bán</label> <input type="text"
 						class="form-control" placeholder="Giá ..." name="gia"
@@ -55,9 +57,13 @@
 						value="${sanpham.trangThai}">
 				</div>
 				<div class="mb-3">
-					<label class="form-label">Loại bánh</label> <input type="text"
-						class="form-control" placeholder="Hình ảnh ..." name="loaibanh"
-						value="${sanpham.loaiBanh.tenLoaiBanh}">
+					<label class="form-label">Loại bánh</label> <select
+						name="maloaiBanh" class="form-select">
+						<c:forEach var="lb" items="${lbList}">
+							<option value="${lb.maLoaiBanh}"
+								${sanpham.loaiBanh.maLoaiBanh == lb.maLoaiBanh ? 'selected' : ''}>${lb.tenLoaiBanh}</option>
+						</c:forEach>
+					</select>
 				</div>
 			</div>
 			<div class="col-4">
